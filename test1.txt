@@ -2,17 +2,17 @@ stages is used to define stages that can be used by jobs. The specification of s
 The ordering of elements in stages defines the ordering of jobs' execution:
 Jobs of the same stage are run in parallel.
 Jobs of the next stage are run after the jobs from the previous stage complete successfully.
-Let's consider the following example, which defines 3 stages:
+which defines 3 stages:
 
 
 First, all jobs of build are executed in parallel.
 If all jobs of build succeed, the test jobs are executed in parallel.
 If all jobs of test succeed, the deploy jobs are executed in parallel.
-If all jobs of deploy succeed, the commit is marked as passed.
-If any of the previous jobs fails, the commit is marked as failed and no jobs of further stage are executed.
+If all jobs of deploy succeed, the commit is marked as passed
+the commit is marked as failed and no jobs of further stage are executed.
 
 
 Since GitLab 10.0 it is possible to define a more elaborate only/except job policy configuration.
 GitLab now supports both, simple and complex strategies, so it is possible to use an array and a hash configuration scheme.
 Two keys are now available: refs and kubernetes. Refs strategy equals to simplified only/except configuration, whereas kubernetes strategy accepts only active keyword.
-See the example below. Job is going to be created only when pipeline has been scheduled or runs for a master branch, and only if kubernetes service is active in the project.
+Job is going to be created only when pipeline has been scheduled or runs for a master branch, and only if kubernetes service is active in the project.
